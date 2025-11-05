@@ -1,6 +1,12 @@
-# SLO-HBYRID: Spiral + L-SHADE Hybrid with Eigen-DE and Stall Rescues
+# Spiral-LSHADE: Spiral-Guided L-SHADE with Eigen-DE and Stall Rescues
 
-**SLO-HBYRID** is a bound-constrained black-box optimizer designed for benchmark and engineering design problems. It extends the **L-SHADE** framework with additional intensification and diversification mechanisms.
+**Spiral-LSHADE** is a bound-constrained black-box optimizer for benchmarks and engineering design.  
+It extends **L-SHADE** (success-history DE + linear population-size reduction) with:
+- **Spiral drift** (structured, geometry-aware diversification around the incumbent),
+- **Stall rescue** (budget-capped Nelder–Mead, triggered only on stagnation),
+- **Optional Eigen-DE** crossover for ill-conditioned landscapes.
+
+👉 Article title: **Spiral-Guided Success-History Differential Evolution for Black-Box Optimization**
 
 ---
 
