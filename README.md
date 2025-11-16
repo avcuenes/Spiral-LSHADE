@@ -50,6 +50,24 @@ source .venv/bin/activate    # Linux/macOS
 pip install -r requirements.txt
 ```
 
+### Makefile shortcuts
+
+A root-level `Makefile` wraps the commands shown below and handles the default `.venv` virtual environment for you.
+
+- `make help` – list all available helper targets.
+- `make install` – create `.venv` (using `python3 -m venv`) and install `requirements.txt`.
+- `make run-eng` – run the engineering-design sweep (`slo_bench.cec_run3`).
+- `make run-cec14-20d` – run the 20D CEC-2014 sweep (`slo_bench.cec_run2`).
+- `make run-bbob` – run the COCO/BBOB sweep (`slo_bench.bbob_run`).
+- `make run-stats` / `make run-mean-std` – reproduce the statistics/plot commands at the end of this README.
+
+All parameters are exposed as variables (e.g. `ENG_DIMS`, `CEC14_OUTDIR`, `BBOB_SEED`, etc.), so you can override them inline:
+
+```bash
+make run-bbob BBOB_DIMS="5 10" BBOB_SEED=99
+make run-cec14-20d PYTHON=.venv/bin/python CEC14_OUTDIR=results_cec14_custom
+```
+
 ### Test algorithms
 
 #### Engineering design (selected problems)
@@ -95,6 +113,34 @@ python3 cec2022_mean_std.py \
   --out appendix_figs \
   --metric err
 ```
+
+### Re-generating figures from stored CSVs
+If you already have populated `results_*` folders (e.g., from the archives in this
+repository) you can rebuild every `appendix_figs` directory without rerunning any
+benchmark sweeps:
+
+```bash
+python scripts/regenerate_appendix_figs.py
+```
+
+The helper auto-detects every `results_*` directory that contains the plotting
+scripts and invokes them with the correct CSV/ERT files. Pass explicit folders to
+limit the work (for example `python scripts/regenerate_appendix_figs.py results_cec22_10D`)
+or run with `--dry-run` to simply review the commands that would be executed.
+
+## Docker workflow
+
+A lightweight `Dockerfile` is provided for fully reproducible runs. Build it with Docker or via the Makefile helper:
+
+```bash
+make docker-build            # builds the image tagged 'spiral-lshade'
+make docker-shell            # drops into /app inside the container with the repo mounted
+make docker-make TARGET=run-eng   # run any Make target inside the container
+make docker-run-eng          # convenience wrapper for 'make run-eng' inside Docker
+make docker-regen-appendix   # regenerate appendix_figs via Docker (pattern: docker-<target>)
+```
+
+Inside the container you can invoke the same `make run-*` targets shown above (dependencies are already installed). The repository directory is bind-mounted, so generated result files persist on the host. Any Make target can be run inside Docker by prefixing it with `docker-`, which simply forwards to `docker run … make <target>`.
 
 
 ## Project Structures
