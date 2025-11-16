@@ -11,7 +11,7 @@ Example
 -------
 python3 -m slo_bench.cec_run2 \
   --suite cec2022 --dims 10 --fids 1-12 --runs 10 \
-  --algs SLO_HBYRID IPOP-CMAES BIPOP-CMAES SciPyDE LBFGSB jSO L_SHADE \
+  --algs Spiral-LSHADE IPOP-CMAES BIPOP-CMAES SciPyDE LBFGSB jSO L_SHADE \
   --budget-mult 20000 --target-tol 1e-8 \
   --seed0 0 --outdir results_cec
 """
@@ -32,7 +32,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
 # ---------------------------------------------------------------------
-#  Your Spiral-LSHADE hybrid (required for SLO_HBYRID)
+#  Your Spiral-LSHADE hybrid (required for Spiral-LSHADE)
 # ---------------------------------------------------------------------
 try:
     from spiral_lshade import SpiralLSHADEParams, _slo_lshade_core
@@ -183,7 +183,7 @@ def run_spiral_lshade_hybrid(f, lb, ub, budget, seed, kw=None):
                                    int(budget), rng, p)
     return float(best_f), int(nfe)
 
-def run_slo_hbyrid(prob: Problem, budget: int, seed: int) -> Tuple[float, int]:
+def run_Spiral-LSHADE(prob: Problem, budget: int, seed: int) -> Tuple[float, int]:
     evalf = EvalCounter(lambda z: prob.f(project_box_open(z, prob.lower, prob.upper)),
                         prob.fopt, 1e-8)
     f_best, nfe = run_spiral_lshade_hybrid(evalf, prob.lower, prob.upper,
@@ -775,7 +775,7 @@ def run_mealpy(prob: Problem, budget: int, seed: int, which: str, **kw):
 #  Mapping of CLI names to runner functions
 # =====================================================================
 ALG_MAP: Dict[str, Callable[[Problem, int, int], Tuple[float, int]]] = {
-    "SLO_HBYRID": run_slo_hbyrid,
+    "Spiral-LSHADE": run_Spiral-LSHADE,
     "CMAES":      run_cmaes,
     "IPOP-CMAES": run_ipop_cmaes,
     "BIPOP-CMAES": run_bipop_cmaes,
@@ -876,7 +876,7 @@ def main():
     ap.add_argument("--budget-mult", type=int, default=20000,
                     help="budget = budget_mult × dim")
     ap.add_argument("--target-tol", type=float, default=1e-8)
-    ap.add_argument("--algs",  nargs="+", default=["SLO_HBYRID", "CMAES", "SciPyDE"])
+    ap.add_argument("--algs",  nargs="+", default=["Spiral-LSHADE", "CMAES", "SciPyDE"])
     ap.add_argument("--outdir", type=str, default="results_cec")
     args = ap.parse_args()
 

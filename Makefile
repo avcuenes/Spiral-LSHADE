@@ -12,7 +12,7 @@ TARGET ?= help
 ENG_DIMS ?= 10 20
 ENG_FIDS ?= 1-16
 ENG_RUNS ?= 30
-ENG_ALGS ?= NLSHADE-RSP LSHADE JADE jSO SLO_HBYRID CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA
+ENG_ALGS ?= NLSHADE-RSP LSHADE JADE jSO Spiral-LSHADE CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA
 ENG_BUDGET ?= 4000
 ENG_TOL ?= 1e-8
 ENG_SEED ?= 0
@@ -21,7 +21,7 @@ ENG_OUTDIR ?= results_cec2
 CEC14_DIMS ?= 20
 CEC14_FIDS ?= 1-30
 CEC14_RUNS ?= 30
-CEC14_ALGS ?= NLSHADE-RSP LSHADE JADE jSO SLO_HBYRID CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA
+CEC14_ALGS ?= NLSHADE-RSP LSHADE JADE jSO Spiral-LSHADE CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA
 CEC14_BUDGET ?= 4000
 CEC14_TOL ?= 1e-8
 CEC14_SEED ?= 0
@@ -47,6 +47,9 @@ MEAN_STD_CSV ?= cec2014_results.csv
 MEAN_STD_OUT ?= appendix_figs
 MEAN_STD_METRIC ?= err
 
+COMPARE_SCRIPT ?= compare.py
+COMPARE_ARGS ?=
+
 REGEN_APPENDIX_SCRIPT ?= scripts/regenerate_appendix_figs.py
 REGEN_APPENDIX_ARGS ?=
 
@@ -55,7 +58,7 @@ RUN_PY_CHECK = @if ! command -v $(PYTHON) >/dev/null 2>&1; then \
 		exit 1; \
 	fi
 
-.PHONY: help venv install clean run-eng run-cec14-20d run-bbob run-stats run-mean-std regen-appendix docker-build docker-shell docker-make docker-%
+.PHONY: help venv install clean run-eng run-cec14-20d run-bbob run-compare run-stats run-mean-std regen-appendix docker-build docker-shell docker-make docker-%
 
 help:
 	@echo "Spiral-LSHADE helper targets"
@@ -63,6 +66,7 @@ help:
 	@echo "  make run-eng            # engineering design benchmark sweep"
 	@echo "  make run-cec14-20d      # CEC-2014 20D sweep"
 	@echo "  make run-bbob           # COCO/BBOB sweep"
+	@echo "  make run-compare        # launch compare.py (COCO/BBOB post-processing)"
 	@echo "  make run-stats          # generate ERT + performance profiles"
 	@echo "  make run-mean-std       # generate mean/std plots"
 	@echo "  make regen-appendix     # rebuild appendix_figs from stored CSVs"
@@ -107,6 +111,10 @@ run-bbob:
 		--algs $(BBOB_ALGS) \
 		--budget-mult $(BBOB_BUDGET) --seed $(BBOB_SEED) \
 		--outdir $(BBOB_OUTDIR)
+
+run-compare:
+	$(RUN_PY_CHECK)
+	$(PYTHON) $(COMPARE_SCRIPT) $(COMPARE_ARGS)
 
 run-stats:
 	$(RUN_PY_CHECK)

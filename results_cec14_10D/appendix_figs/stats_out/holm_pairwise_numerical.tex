@@ -4,14 +4,14 @@ Alg A & Alg B & $p_{\text{Holm}}$ & $-\log_{10}(p_{\text{Holm}})$\\\midrule
 NLSHADE-RSP & SciPyDE & 1.08e-07 & 6.97\\
 NLSHADE-RSP & PSO & 1.1e-07 & 6.96\\
 LBFGSB & jSO & 1.12e-07 & 6.95\\
-LBFGSB & SLO_HBYRID & 1.14e-07 & 6.94\\
+LBFGSB & Spiral-LSHADE & 1.14e-07 & 6.94\\
 LBFGSB & NLSHADE-RSP & 1.15e-07 & 6.94\\
 LBFGSB & LSHADE & 1.17e-07 & 6.93\\
 JADE & LBFGSB & 1.19e-07 & 6.92\\
 GWO & NLSHADE-RSP & 1.21e-07 & 6.92\\
 GA & NLSHADE-RSP & 1.23e-07 & 6.91\\
 SciPyDE & jSO & 1.06e-06 & 5.97\\
-SLO_HBYRID & SciPyDE & 2.61e-06 & 5.58\\
+Spiral-LSHADE & SciPyDE & 2.61e-06 & 5.58\\
 NLSHADE-RSP & SSA & 3.38e-06 & 5.47\\
 LBFGSB & PSO & 5.33e-06 & 5.27\\
 GWO & jSO & 5.43e-06 & 5.27\\
@@ -24,16 +24,16 @@ GWO & LBFGSB & 6.67e-05 & 4.18\\
 PSO & jSO & 7.58e-05 & 4.12\\
 LBFGSB & SSA & 7.75e-05 & 4.11\\
 GWO & JADE & 8.76e-05 & 4.06\\
-PSO & SLO_HBYRID & 0.000101 & 4.00\\
-SLO_HBYRID & SSA & 0.000181 & 3.74\\
-GWO & SLO_HBYRID & 0.000186 & 3.73\\
+PSO & Spiral-LSHADE & 0.000101 & 4.00\\
+Spiral-LSHADE & SSA & 0.000181 & 3.74\\
+GWO & Spiral-LSHADE & 0.000186 & 3.73\\
 GWO & LSHADE & 0.000206 & 3.69\\
 JADE & SciPyDE & 0.000233 & 3.63\\
 GA & JADE & 0.000263 & 3.58\\
-CMAES & SLO_HBYRID & 0.000393 & 3.41\\
+CMAES & Spiral-LSHADE & 0.000393 & 3.41\\
 LSHADE & PSO & 0.000439 & 3.36\\
 LBFGSB & SciPyDE & 0.000475 & 3.32\\
-GA & SLO_HBYRID & 0.000489 & 3.31\\
+GA & Spiral-LSHADE & 0.000489 & 3.31\\
 GA & LSHADE & 0.000666 & 3.18\\
 GA & LBFGSB & 0.000686 & 3.16\\
 LSHADE & SSA & 0.000945 & 3.02\\
@@ -46,7 +46,7 @@ JADE & jSO & 0.064 & 1.19\\
 CMAES & SciPyDE & 0.104 & 0.98\\
 CMAES & JADE & 0.277 & 0.56\\
 CMAES & SSA & 0.34 & 0.47\\
-JADE & SLO_HBYRID & 0.389 & 0.41\\
+JADE & Spiral-LSHADE & 0.389 & 0.41\\
 CMAES & PSO & 0.654 & 0.18\\
 CMAES & GWO & 0.692 & 0.16\\
 CMAES & GA & 0.729 & 0.14\\
@@ -55,7 +55,7 @@ JADE & LSHADE & 0.861 & 0.07\\
 GA & PSO & 1 & -0.00\\
 GA & SSA & 1 & -0.00\\
 GA & GWO & 1 & -0.00\\
-NLSHADE-RSP & SLO_HBYRID & 1 & -0.00\\
+NLSHADE-RSP & Spiral-LSHADE & 1 & -0.00\\
 NLSHADE-RSP & jSO & 1 & -0.00\\
 LSHADE & NLSHADE-RSP & 1 & -0.00\\
 LSHADE & jSO & 1 & -0.00\\
@@ -65,8 +65,8 @@ PSO & SciPyDE & 1 & -0.00\\
 PSO & SSA & 1 & -0.00\\
 GWO & SSA & 1 & -0.00\\
 GWO & PSO & 1 & -0.00\\
-LSHADE & SLO_HBYRID & 1 & -0.00\\
-SLO_HBYRID & jSO & 1 & -0.00\\
+LSHADE & Spiral-LSHADE & 1 & -0.00\\
+Spiral-LSHADE & jSO & 1 & -0.00\\
 \bottomrule\end{tabular}
 \caption{Wilcoxon signed-rank pairwise tests with Holm correction. Numerical values only.}
 \label{tab:wilcoxon-holm-numeric}

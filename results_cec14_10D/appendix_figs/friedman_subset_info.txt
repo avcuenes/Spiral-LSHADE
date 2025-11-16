@@ -2,17 +2,17 @@ Functions used: 30
 Algorithms used: 12
 Dropped algorithms (insufficient coverage): []
 Coverage by algorithm:
-             n_funcs
-alg                 
-CMAES             30
-GA                30
-GWO               30
-JADE              30
-LBFGSB            30
-LSHADE            30
-NLSHADE-RSP       30
-PSO               30
-SLO_HBYRID        30
-SSA               30
-SciPyDE           30
-jSO               30
+               n_funcs
+alg                   
+CMAES               30
+GA                  30
+GWO                 30
+JADE                30
+LBFGSB              30
+LSHADE              30
+NLSHADE-RSP         30
+PSO                 30
+SSA                 30
+SciPyDE             30
+Spiral-LSHADE       30
+jSO                 30

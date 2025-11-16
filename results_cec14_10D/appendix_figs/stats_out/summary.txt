@@ -1,3 +1,3 @@
 File: wilcoxon_holm.csv
-Algorithms: CMAES, GA, GWO, JADE, LBFGSB, LSHADE, NLSHADE-RSP, PSO, SLO_HBYRID, SSA, SciPyDE, jSO
+Algorithms: CMAES, GA, GWO, JADE, LBFGSB, LSHADE, NLSHADE-RSP, PSO, Spiral-LSHADE, SSA, SciPyDE, jSO
 Significant pairs (<0.05): 41

@@ -9,7 +9,7 @@ CLI  (example):
         --dims 2 3 5 10                         \
         --functions 1-24                        \
         --instances 1-15                        \
-        --algs SLO_HBYRID CMAES SciPyDE LBFGSB     \
+        --algs Spiral-LSHADE CMAES SciPyDE LBFGSB     \
         --budget-mult 4000                      \
         --seed 42                               \
         --outdir exdata
@@ -92,8 +92,8 @@ def build_port(selected: List[str]):
         u = n.upper()
 
         # --- Your hybrid & classical baselines ---
-        if u in ("SLO_HBYRID", "SLO_HYBRID"):
-            port.append(("SLO_HBYRID", run_spiral_lshade_hybrid))
+        if u in ("Spiral-LSHADE", "SLO_HYBRID"):
+            port.append(("Spiral-LSHADE", run_spiral_lshade_hybrid))
         elif u == "CMAES":
             port.append(("CMAES", run_cmaes))
         elif u in ("SCIPYDE", "DE"):
@@ -295,7 +295,7 @@ def run_mealpy(mealpy_cls, f, lb, ub, budget, seed, kw):
 #     port=[]
 #     for n in selected:
 #         u=n.upper()
-#         if u in ("SLO_HBYRID","SLO_HBYRID"): port.append(("SLO_HBYRID",run_spiral_lshade_hybrid))
+#         if u in ("Spiral-LSHADE","Spiral-LSHADE"): port.append(("Spiral-LSHADE",run_spiral_lshade_hybrid))
 #         elif u=="CMAES":                port.append(("CMAES",run_cmaes))
 #         elif u in ("SCIPYDE","DE"):     port.append(("SciPyDE",run_scipy_de))
 #         elif u=="LBFGSB":               port.append(("LBFGSB",run_lbfgsb))

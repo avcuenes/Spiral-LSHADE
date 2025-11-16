@@ -1,4 +1,4 @@
-fid,CMAES,GA,GWO,JADE,LBFGSB,LSHADE,NLSHADE-RSP,PSO,SLO_HBYRID,SSA,SciPyDE,jSO
+fid,CMAES,GA,GWO,JADE,LBFGSB,LSHADE,NLSHADE-RSP,PSO,SSA,SciPyDE,Spiral-LSHADE,jSO
 1,False,False,False,False,False,False,False,False,False,False,False,False
 2,False,False,False,False,False,False,False,False,False,False,False,False
 3,False,False,False,False,False,False,False,False,False,False,False,False

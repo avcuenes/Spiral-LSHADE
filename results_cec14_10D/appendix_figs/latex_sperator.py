@@ -5,13 +5,13 @@ from pathlib import Path
 
 # === INPUT ===
 CSV_PATH = "err_mean_std_by_fid_alg.csv"  # your CSV with columns:
-# fid,CMAES,GA,GWO,JADE,LBFGSB,LSHADE,NLSHADE-RSP,PSO,SLO_HBYRID,SSA,SciPyDE,jSO
+# fid,CMAES,GA,GWO,JADE,LBFGSB,LSHADE,NLSHADE-RSP,PSO,Spiral-LSHADE,SSA,SciPyDE,jSO
 
 # Desired order of algorithms (edit if needed)
 alg_order = [
     "CMAES", "GA", "GWO", "JADE",
     "LBFGSB", "LSHADE", "NLSHADE-RSP", "PSO",
-    "SLO_HBYRID", "SSA", "SciPyDE", "jSO"
+    "Spiral-LSHADE", "SSA", "SciPyDE", "jSO"
 ]
 
 # Chunk size (4 algorithms per table)

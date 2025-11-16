@@ -5,7 +5,7 @@ algorithm_result_folders = [
     "exdata/exdata/CMAES", # Replace with actual folder names from your runs
     "exdata/exdata/GWO",
     "exdata/exdata/LBFGSB",
-    "exdata/exdata/SLO_HBYRID",
+    "exdata/exdata/Spiral-LSHADE",
     "exdata/exdata/SciPyDE",
     "exdata/exdata/PSO",
     "exdata/exdata/SSA",    

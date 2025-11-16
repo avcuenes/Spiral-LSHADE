@@ -8,7 +8,7 @@
   - JADE: 3.600
   - LSHADE: 3.850
   - NLSHADE-RSP: 4.000
-  - SLO_HBYRID: 4.200
+  - Spiral-LSHADE: 4.200
   - CMAES: 5.967
   - MealpyGA: 7.533
   - PSO: 8.033

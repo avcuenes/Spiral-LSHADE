@@ -6,7 +6,7 @@
 
   - NLSHADE-RSP: 2.850
   - jSO: 3.233
-  - SLO_HBYRID: 3.567
+  - Spiral-LSHADE: 3.567
   - LSHADE: 3.933
   - JADE: 4.783
   - CMAES: 6.467

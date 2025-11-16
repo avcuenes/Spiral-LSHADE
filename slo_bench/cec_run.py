@@ -12,7 +12,7 @@ Example
 -------
 python3 -m slo_bench.cec_run \
   --suite cec2022 --dims 10 20 --fids 1-12 --runs 30 \
-  --algs SLO_HBYRID CMAES SciPyDE jSO L_SHADE LBFGSB GWO  \
+  --algs Spiral-LSHADE CMAES SciPyDE jSO L_SHADE LBFGSB GWO  \
   --budget-mult 20000 --target-tol 1e-8 \
   --seed0 0 --outdir results_cec
 """
@@ -185,7 +185,7 @@ def run_spiral_lshade_hybrid(f, lb, ub, budget, seed, kw=None):
                                    int(budget), rng, p)
     return float(best_f), int(nfe)
 
-def run_slo_hbyrid(prob: Problem, budget: int, seed: int) -> Tuple[float, int]:
+def run_Spiral-LSHADE(prob: Problem, budget: int, seed: int) -> Tuple[float, int]:
     evalf = EvalCounter(lambda z: prob.f(project_box_open(z, prob.lower, prob.upper)),
                         prob.fopt, 1e-8)
     f_best, nfe = run_spiral_lshade_hybrid(evalf, prob.lower, prob.upper,
@@ -532,7 +532,7 @@ def main():
     ap.add_argument("--budget-mult", type=int, default=20000,
                     help="budget = budget_mult × dim")
     ap.add_argument("--target-tol", type=float, default=1e-8)
-    ap.add_argument("--algs",  nargs="+", default=["SLO_HBYRID", "CMAES", "SciPyDE"])
+    ap.add_argument("--algs",  nargs="+", default=["Spiral-LSHADE", "CMAES", "SciPyDE"])
     ap.add_argument("--outdir", type=str, default="results_cec")
     args = ap.parse_args()
 
@@ -548,7 +548,7 @@ def main():
 
     # Build algorithm map (add Mealpy lazily if requested)
     ALG_MAP: Dict[str, Callable[[Problem,int,int], Tuple[float,int]]] = {
-        "SLO_HBYRID": run_slo_hbyrid,
+        "Spiral-LSHADE": run_Spiral-LSHADE,
         "CMAES":      run_cmaes,
         "SciPyDE":    run_scipy_de,
         "LBFGSB":     run_lbfgsb,

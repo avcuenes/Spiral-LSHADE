@@ -59,12 +59,13 @@ A root-level `Makefile` wraps the commands shown below and handles the default `
 - `make run-eng` – run the engineering-design sweep (`slo_bench.cec_run3`).
 - `make run-cec14-20d` – run the 20D CEC-2014 sweep (`slo_bench.cec_run2`).
 - `make run-bbob` – run the COCO/BBOB sweep (`slo_bench.bbob_run`).
+- `make run-compare` – post-process COCO/BBOB data via `compare.py` (COCO PP suite).
 - `make run-stats` / `make run-mean-std` – reproduce the statistics/plot commands at the end of this README.
 
 All parameters are exposed as variables (e.g. `ENG_DIMS`, `CEC14_OUTDIR`, `BBOB_SEED`, etc.), so you can override them inline:
 
 ```bash
-make run-bbob BBOB_DIMS="5 10" BBOB_SEED=99
+make run-bbob BBOB_DIMS="5 10" BBOB_SSpiral-LSHADE
 make run-cec14-20d PYTHON=.venv/bin/python CEC14_OUTDIR=results_cec14_custom
 ```
 
@@ -74,7 +75,7 @@ make run-cec14-20d PYTHON=.venv/bin/python CEC14_OUTDIR=results_cec14_custom
 ```bash
 python3 -m slo_bench.cec_run3 \
   --suite eng --dims 10 20 --fids 1-16 --runs 30 \
-  --algs NLSHADE-RSP LSHADE JADE jSO SLO_HBYRID CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA \
+  --algs NLSHADE-RSP LSHADE JADE jSO Spiral-LSHADE CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA \
   --budget-mult 4000 --target-tol 1e-8 \
   --seed0 0 --outdir results_cec2
 ```
@@ -82,7 +83,7 @@ python3 -m slo_bench.cec_run3 \
 ```bash
 python3 -m slo_bench.cec_run2 \
   --suite cec2014 --dims 20 --fids 1-30 --runs 30 \
-  --algs NLSHADE-RSP LSHADE JADE jSO SLO_HBYRID CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA \
+  --algs NLSHADE-RSP LSHADE JADE jSO Spiral-LSHADE CMAES SciPyDE LBFGSB PSO GWO MealpyGA SSA \
   --budget-mult 4000 --target-tol 1e-8 \
   --seed0 0 --outdir results_cec14_20D
 ```
